@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
@@ -67,50 +59,46 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList className="space-x-1">
-              {navigationItems.map((item) => (
-                <NavigationMenuItem key={item.name}>
-                  {item.items ? (
-                    <>
-                      <NavigationMenuTrigger className="font-inter font-medium">
-                        {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="grid w-[400px] gap-3 p-4">
-                          {item.items.map((subItem) => (
-                            <NavigationMenuLink key={subItem.name} asChild>
-                              <Link
-                                to={subItem.href}
-                                className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                                  isActiveLink(subItem.href) && "bg-accent text-accent-foreground"
-                                )}
-                              >
-                                <div className="text-sm font-medium leading-none">{subItem.name}</div>
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
-                        </div>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <NavigationMenuLink asChild>
-                      <Link
-                        to={item.href!}
-                        className={cn(
-                          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground font-inter font-medium",
-                          isActiveLink(item.href!) && "bg-accent text-accent-foreground"
-                        )}
-                      >
-                        {item.name}
-                      </Link>
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navigationItems.map((item) => (
+              <div key={item.name} className="relative group">
+                {item.items ? (
+                  <>
+                    <button className="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
+                      <span>{item.name}</span>
+                      <ChevronDown className="h-4 w-4" />
+                    </button>
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="py-2">
+                        {item.items.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.href}
+                            className={cn(
+                              "block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors",
+                              isActiveLink(subItem.href) && "bg-accent text-accent-foreground"
+                            )}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    to={item.href!}
+                    className={cn(
+                      "px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
+                      isActiveLink(item.href!) ? "text-primary" : "text-foreground"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </nav>
 
           {/* CTA Button */}
           <Button variant="hero" size="lg" className="hidden lg:flex" asChild>
@@ -124,21 +112,23 @@ const Navigation = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex flex-col space-y-4 mt-8">
-                {navigationItems.map((item) => (
-                  <div key={item.name}>
-                    {item.items ? (
-                      <div>
-                        <h3 className="font-semibold text-lg mb-2 text-primary">{item.name}</h3>
-                        <div className="ml-4 space-y-2">
+            <SheetContent side="right" className="w-[280px]">
+              <div className="flex flex-col mt-8">
+                <div className="space-y-1">
+                  {navigationItems.map((item) => (
+                    <div key={item.name}>
+                      {item.items ? (
+                        <div className="space-y-1">
+                          <div className="px-3 py-2 text-sm font-medium text-muted-foreground border-b border-border">
+                            {item.name}
+                          </div>
                           {item.items.map((subItem) => (
                             <Link
                               key={subItem.name}
                               to={subItem.href}
                               className={cn(
-                                "block py-2 text-sm transition-colors hover:text-primary",
-                                isActiveLink(subItem.href) && "text-primary font-medium"
+                                "block px-6 py-2 text-sm transition-colors hover:bg-accent hover:text-accent-foreground rounded-md",
+                                isActiveLink(subItem.href) && "bg-accent text-accent-foreground font-medium"
                               )}
                               onClick={() => setIsOpen(false)}
                             >
@@ -146,26 +136,28 @@ const Navigation = () => {
                             </Link>
                           ))}
                         </div>
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.href!}
-                        className={cn(
-                          "block py-3 text-lg font-medium transition-colors hover:text-primary",
-                          isActiveLink(item.href!) && "text-primary"
-                        )}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-                <Button variant="hero" size="lg" className="mt-6" asChild>
-                  <Link to="/community/register" onClick={() => setIsOpen(false)}>
-                    Get Started
-                  </Link>
-                </Button>
+                      ) : (
+                        <Link
+                          to={item.href!}
+                          className={cn(
+                            "block px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground rounded-md",
+                            isActiveLink(item.href!) && "bg-accent text-accent-foreground"
+                          )}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 px-3">
+                  <Button variant="default" size="sm" className="w-full" asChild>
+                    <Link to="/community/register" onClick={() => setIsOpen(false)}>
+                      Get Started
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
