@@ -1,6 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Milestones from "@/components/Milestones";
+import HomePageSections from "@/components/HomePageSections";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -9,7 +11,9 @@ const Index = () => {
       <main>
         <Hero />
         <Milestones />
+        <HomePageSections />
       </main>
+      <Footer />
     </div>
   );
 };
