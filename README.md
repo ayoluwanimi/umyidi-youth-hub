@@ -1,73 +1,97 @@
-# Welcome to your Lovable project
+# Project Name
 
-## Project info
+## Description
+Brief description of your NGO website project.
 
-**URL**: https://lovable.dev/projects/1f7f8c4e-0d6b-49b3-9450-31b6e84cc0b5
+## Tech Stack
+- Next.js 14
+- React 18
+- Firebase (Auth, Firestore, Storage)
+- Netlify Deployment
 
-## How can I edit this code?
+## Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Firebase account
+- Netlify account
 
-There are several ways of editing your application.
+## Installation
 
-**Use Lovable**
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/yourproject.git
+cd yourproject
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1f7f8c4e-0d6b-49b3-9450-31b6e84cc0b5) and start prompting.
+2. Install dependencies:
+```bash
+npm install
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+3. Set up environment variables:
+```bash
+cp .env.local.example .env.local
+```
+Edit `.env.local` with your Firebase and Netlify credentials.
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. Run development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment to Netlify
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Automatic Deployment
+1. Connect your GitHub repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `.next`
+4. Add environment variables in Netlify dashboard
 
-**Use GitHub Codespaces**
+### Manual Deployment
+```bash
+npm run build
+netlify deploy --prod
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Firebase Setup
 
-## What technologies are used for this project?
+1. Create a Firebase project
+2. Enable Authentication, Firestore, and Storage
+3. Add Firebase configuration to `.env.local`
+4. Deploy Firebase rules:
+```bash
+firebase deploy --only firestore:rules,storage:rules
+```
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1f7f8c4e-0d6b-49b3-9450-31b6e84cc0b5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Project Structure
+```
+/
+├── .env.local.example
+├── .gitignore
+├── .netlify/
+├── netlify.toml
+├── next.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── public/
+│   ├── favicon.ico
+│   └── images/
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Header.js
+│   │   │   ├── Navigation.js
+│   │   │   ├── Footer.js
+│   │   │   └── Layout.js
+│   │   └── ui/
+│   ├── lib/
+│   │   ├── firebase.js
+│   │   └── firebase-admin.js
+│   ├── pages/
+│   ├── styles/
+│   │   ├── globals.css
+│   │   └── components/
+│   └── utils/
+└── firebase.json
+```
