@@ -9,7 +9,7 @@ export default defineStackbitConfig({
     stackbitVersion: '~0.6.0',
 
     contentSources: [
-        new GitContentSource({
+        GitContentSource({
             rootPath: __dirname,
             contentDirs: ['authors'],
             excludeFiles: [
