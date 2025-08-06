@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../stackbit.config.ts"],
+  "sourcesContent": ["// stackbit.config.ts\r\n// stackbit.config.ts - CORRECTED\r\n\r\n// stackbit.config.ts - CORRECTED\r\n\r\nimport { defineStackbitConfig } from '@stackbit/types';\r\n// ... other imports\r\n\r\nexport default defineStackbitConfig({\r\n    stackbitVersion: '~0.6.0',\r\n    contentSources: [\r\n        // ... your content source config\r\n    ],\r\n\r\n    models: {\r\n        Author: {\r\n            type: 'data',\r\n            label: 'Author',\r\n            filePath: 'authors/{slug}.json',\r\n            fields: [\r\n                { type: 'string', name: 'name', label: 'Author Name', required: true },\r\n                { type: 'image', name: 'picture', label: 'Author Picture' },\r\n            ],\r\n        },\r\n        // ... other model definitions\r\n    }\r\n});\r\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAKA,mBAAqC;AAGrC,IAAO,8BAAQ,mCAAqB;AAAA,EAChC,iBAAiB;AAAA,EACjB,gBAAgB;AAAA;AAAA,EAEhB;AAAA,EAEA,QAAQ;AAAA,IACJ,QAAQ;AAAA,MACJ,MAAM;AAAA,MACN,OAAO;AAAA,MACP,UAAU;AAAA,MACV,QAAQ;AAAA,QACJ,EAAE,MAAM,UAAU,MAAM,QAAQ,OAAO,eAAe,UAAU,KAAK;AAAA,QACrE,EAAE,MAAM,SAAS,MAAM,WAAW,OAAO,iBAAiB;AAAA,MAC9D;AAAA,IACJ;AAAA;AAAA,EAEJ;AACJ,CAAC;",
+  "names": []
+}
