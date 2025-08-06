@@ -1,16 +1,17 @@
 // stackbit.config.ts - FINAL CORRECTED VERSION
 
 import { defineStackbitConfig } from '@stackbit/types';
-// *** THE FIX IS ON THIS LINE ***
-// We are importing the default export from the library, so no curly braces are needed.
-import GitContentSource from '@stackbit/cms-git';
+import { GitContentSource } from '@stackbit/cms-git';
 
 export default defineStackbitConfig({
     stackbitVersion: '~0.6.0',
 
     contentSources: [
         GitContentSource({
+            // *** THE FIX IS ON THIS LINE ***
+            // The correct property name is 'rootPath', not 'rootDir'.
             rootPath: __dirname,
+
             contentDirs: ['authors'],
             excludeFiles: [
                 'package.json',
