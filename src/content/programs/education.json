@@ -1,0 +1,15 @@
+{
+  "id": "education",
+  "title": "Education Support Program",
+  "shortDescription": "Comprehensive academic support for youth",
+  "fullDescription": "Our Education Support Program provides comprehensive academic assistance to help young people excel in their studies and prepare for higher education.",
+  "features": [
+    "One-on-one tutoring",
+    "Study groups",
+    "Exam preparation",
+    "Career guidance"
+  ],
+  "eligibility": "Ages 14-25, enrolled in school",
+  "duration": "Ongoing",
+  "image": "/images/education-program.jpg"
+}

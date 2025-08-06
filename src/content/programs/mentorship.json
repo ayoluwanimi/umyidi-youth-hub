@@ -1,0 +1,15 @@
+{
+  "id": "mentorship",
+  "title": "Mentorship Program",
+  "shortDescription": "Connect with experienced professionals",
+  "fullDescription": "Our Mentorship Program pairs youth with experienced professionals who provide guidance, support, and career advice.",
+  "features": [
+    "One-on-one mentoring",
+    "Career guidance",
+    "Networking opportunities",
+    "Professional development"
+  ],
+  "eligibility": "Ages 18-25",
+  "duration": "6 months minimum",
+  "image": "/images/mentorship-program.jpg"
+}

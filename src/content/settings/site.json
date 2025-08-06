@@ -1,0 +1,14 @@
+{
+  "siteName": "UMYIDI Youth Hub",
+  "tagline": "Empowering Youth for a Brighter Future",
+  "contact": {
+    "email": "info@umyidiyouthhub.org",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Youth Street, City, State 12345"
+  },
+  "social": {
+    "facebook": "https://facebook.com/umyidiyouthhub",
+    "twitter": "https://twitter.com/umyidiyouthhub",
+    "instagram": "https://instagram.com/umyidiyouthhub"
+  }
+}

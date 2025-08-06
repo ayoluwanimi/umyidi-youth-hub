@@ -1,0 +1,15 @@
+{
+  "id": "skills-training",
+  "title": "Skills Training Program",
+  "shortDescription": "Learn practical skills for employment",
+  "fullDescription": "Our Skills Training Program equips young people with practical, marketable skills needed in today's job market.",
+  "features": [
+    "Computer literacy",
+    "Digital marketing",
+    "Basic coding",
+    "Entrepreneurship basics"
+  ],
+  "eligibility": "Ages 16-25",
+  "duration": "3-6 months",
+  "image": "/images/skills-program.jpg"
+}
