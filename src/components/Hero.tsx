@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import homeData from '../content/pages/home.json';
 
 // We will use an image that we know exists in your repository.
-import HeroImage from "@/assets/cuate.png";
+import HeroImage from "@/assets/hero-image.jpg";
 
 export default function Hero() {
   return (
