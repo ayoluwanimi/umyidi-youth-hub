@@ -1,72 +1,51 @@
-import homeData from '../content/pages/home.json';
-import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
-import HeroImage from "@/assets/hero-section.png";
+// src/components/Hero.tsx
+
 import { Link } from "react-router-dom";
 
-const Hero = () => {
-  return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={HeroImage}
-          alt="Youth empowerment"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-transparent"></div>
-      </div>
+// This is the data file we created.
+import homeData from '../content/pages/home.json';
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-white space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight">
-               {homeData.title}
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 font-inter leading-relaxed">
-                {homeData.subtitle}
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" size="xl" asChild>
-                <Link to="/community/register">
+// We will use an image that we know exists in your repository.
+import HeroImage from "@/assets/cuate.png";
+
+export default function Hero() {
+  return (
+    <section className="w-full py-12 md:py-24 lg:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+          <div className="flex flex-col justify-center space-y-4">
+            <div className="space-y-2">
+              <div className="text-center">
+                {/* This now reads from home.json */}
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+                  {homeData.title}
+                </h1>
+                {/* This now reads from home.json */}
+                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                  {homeData.subtitle}
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center">
+                <Link
+                  className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                  to="#"
+                >
+                  {/* This now reads from home.json */}
                   {homeData.buttonText}
                 </Link>
-              </Button>
-              <Button variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary">
-                <Link to="/about/mission" className="flex items-center gap-2">
-                  Learn More
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Right Content - Video Player */}
-          <div className="relative">
-            <div className="relative group cursor-pointer">
-              <div className="aspect-video bg-black/20 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/30 transition-all duration-300">
-                <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 glass-effect">
-                  <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
-                </div>
               </div>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/40 to-transparent"></div>
             </div>
-            <p className="text-center text-white/80 mt-4 font-medium">
-              Watch Our Empowerment Drive
-            </p>
           </div>
+          {/* This now uses an image that exists */}
+          <img
+            alt="Hero"
+            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
+            height="550"
+            src={HeroImage}
+            width="550"
+          />
         </div>
       </div>
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 right-20 w-20 h-20 bg-accent/20 rounded-full animate-float hidden lg:block"></div>
-      <div className="absolute bottom-20 left-20 w-16 h-16 bg-primary-glow/20 rounded-full animate-float animation-delay-300 hidden lg:block"></div>
     </section>
   );
-};
-
-export default Hero;
+}
