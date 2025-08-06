@@ -60,11 +60,10 @@ export default defineStackbitConfig({
             // Files for this model will be in 'src/content/pages/'
             filePath: 'src/content/pages/{slug}.json',
             fields: [
-                { type: 'string', name: 'title', label: 'Title', required: true },
-                { type: 'string', name: 'subtitle', label: 'Subtitle' },
-                { type: 'string', name: 'buttonText', label: 'Button Text' },
-                { type: 'image', name: 'heroImage', label: 'Hero Image'}
-            ]
+    { type: 'string', name: 'title', label: 'Title', required: true },
+    { type: 'string', name: 'subtitle', label: 'Subtitle' },
+    { type: 'string', name: 'buttonText', label: 'Button Text' }
+]
         }
     }
 });

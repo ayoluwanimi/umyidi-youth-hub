@@ -1,6 +1,7 @@
 import homeData from '../content/pages/home.json';
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
+import HeroImage from "@/assets/hero-section.png";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -9,7 +10,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={homeData.heroImage}
+          src={HeroImage}
           alt="Youth empowerment"
           className="w-full h-full object-cover"
         />
