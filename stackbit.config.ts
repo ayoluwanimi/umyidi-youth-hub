@@ -1,24 +1,22 @@
 // stackbit.config.ts - FINAL CORRECTED VERSION
 
 import { defineStackbitConfig } from '@stackbit/types';
-import GitContentSource from '@stackbit/cms-git';
+// Step 1: Import the entire module into a single object.
+import * as GitContentSourceModule from '@stackbit/cms-git';
+
+// Step 2: The actual class we need is on the ".default" property of the module.
+// We pull it out and assign it to a new constant.
+const GitContentSource = GitContentSourceModule.default;
 
 export default defineStackbitConfig({
     stackbitVersion: '~0.6.0',
 
     contentSources: [
-        // *** THE FIX IS HERE ***
-        // We must create a new "instance" of GitContentSource
-        // and pass it a configuration object with our settings.
-         GitContentSource({
-            // Tells Stackbit where your project root is
+        // Step 3: Now 'GitContentSource' is the correct, callable class constructor.
+        // This 'new' call will now work.
+        new GitContentSource({
             rootPath: __dirname,
-
-            // Tells Stackbit which directories contain your content
             contentDirs: ['authors'],
-
-            // Tells Stackbit which files to ignore so it doesn't
-            // try to treat them as content
             excludeFiles: [
                 'package.json',
                 'package-lock.json',
