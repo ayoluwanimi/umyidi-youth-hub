@@ -1,7 +1,7 @@
+import homeData from '../content/pages/home.json';
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
   return (
@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
+          src={homeData.heroImage}
           alt="Youth empowerment"
           className="w-full h-full object-cover"
         />
@@ -23,22 +23,17 @@ const Hero = () => {
           <div className="text-white space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight">
-                Empowering
-                <span className="block gradient-text bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">
-                  Youth Dreams
-                </span>
-                into Reality
+               {homeData.title}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 font-inter leading-relaxed">
-                Giving youths from marginalized backgrounds and persons with disabilities 
-                the tools, skills, and opportunities they need to thrive and lead.
+                {homeData.subtitle}
               </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="accent" size="xl" asChild>
                 <Link to="/community/register">
-                  Join Our Community
+                  {homeData.buttonText}
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary">
