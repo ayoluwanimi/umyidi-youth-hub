@@ -20,15 +20,13 @@ export default defineStackbitConfig({
         new GitContentSource({
             rootPath: __dirname,
 
-            // We will tell Stackbit to look for content in a 'content' folder
-            // inside 'src'. We will create this folder in the next step.
+            // We tell Stackbit to look for editable content in this folder.
             contentDirs: ['src/content'],
 
             // The models this content source will use.
             models: ['Page'],
 
             // CRITICAL: Exclude all non-content files to prevent errors.
-            // This is tailored to your project.
             excludeFiles: [
                 '.eslintrc.cjs',
                 'components.json',
@@ -41,8 +39,7 @@ export default defineStackbitConfig({
                 'tsconfig.json',
                 'tsconfig.node.json',
                 'vite.config.ts',
-                // Ignore the entire src directory by default,
-                // except for the contentDirs specified above.
+                // Ignore all source code by default, except for 'contentDirs'.
                 'src/assets',
                 'src/components',
                 'src/lib',
