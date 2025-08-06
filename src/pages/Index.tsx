@@ -1,3 +1,4 @@
+import homeData from '../content/pages/home.json';
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Milestones from "@/components/Milestones";
