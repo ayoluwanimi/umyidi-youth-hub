@@ -1,7 +1,7 @@
 // stackbit.config.ts
 
 import { defineStackbitConfig } from '@stackbit/types';
-// This import method prevents the "not callable" error.
+// This is the robust import method that prevents the "not callable" error
 import * as GitContentSourceModule from '@stackbit/cms-git';
 
 const GitContentSource = GitContentSourceModule.default;
@@ -9,72 +9,64 @@ const GitContentSource = GitContentSourceModule.default;
 export default defineStackbitConfig({
     stackbitVersion: '~0.6.0',
 
-    // --- Configuration for Netlify ---
-    // This section is derived directly from your package.json's "scripts".
-
-    // The command to build your site for production.
+    // --- Configuration for Your Vite/Netlify Setup ---
+    // These commands are correct based on your package.json
     buildCommand: 'npm run build',
-
-    // The directory where your built site is placed. For Vite, the default is 'dist'.
-    publishDir: 'dist',
-
-    // *** THE MAIN FIX IS HERE ***
-    // This is the correct command to start the Vite development server.
-    // The `-- --port {PORT}` part is essential for Stackbit and Netlify to manage the port.
-    devCommand: 'npm run dev -- --port {PORT}',
+    publishDir: 'dist', // Vite's default output directory
+    devCommand: 'npm run dev -- --port {PORT}', // Correct command for Vite
 
     // --- Content Source Configuration ---
     contentSources: [
         new GitContentSource({
             rootPath: __dirname,
 
-            // *** IMPORTANT: CUSTOMIZE THIS ***
-            // List the folders containing your markdown or JSON content files.
-            // Example: ['src/content/pages', 'src/data']
+            // We will tell Stackbit to look for content in a 'content' folder
+            // inside 'src'. We will create this folder in the next step.
             contentDirs: ['src/content'],
 
-            // List the names of the models defined below.
-            models: ['Page', 'Author'],
+            // The models this content source will use.
+            models: ['Page'],
 
-            // Exclude all non-content files to prevent validation errors.
+            // CRITICAL: Exclude all non-content files to prevent errors.
+            // This is tailored to your project.
             excludeFiles: [
+                '.eslintrc.cjs',
+                'components.json',
                 'package.json',
                 'package-lock.json',
-                '.gitignore',
-                'README.md',
-                // Your project's config files:
-                'stackbit.config.ts',
-                'vite.config.ts',
                 'postcss.config.js',
+                'README.md',
+                'stackbit.config.ts',
                 'tailwind.config.js',
                 'tsconfig.json',
                 'tsconfig.node.json',
-                // Ignore the build output and node_modules folders
-                'dist',
-                'node_modules'
+                'vite.config.ts',
+                // Ignore the entire src directory by default,
+                // except for the contentDirs specified above.
+                'src/assets',
+                'src/components',
+                'src/lib',
+                'src/pages',
+                'src/App.tsx',
+                'src/index.css',
+                'src/main.tsx'
             ]
         })
     ],
 
     // --- Model Definitions ---
-    // *** IMPORTANT: CUSTOMIZE THIS to match your content structure ***
+    // This defines the structure of a generic "Page" that Stackbit can edit.
     models: {
         Page: {
-            type: 'page',
+            type: 'data', // Use 'data' for JSON files
             label: 'Page',
-            filePath: 'src/content/pages/{slug}.md',
+            // Files for this model will be in 'src/content/pages/'
+            filePath: 'src/content/pages/{slug}.json',
             fields: [
-                { type: 'string', name: 'title', required: true },
-                { type: 'markdown', name: 'content' }
-            ]
-        },
-        Author: {
-            type: 'data',
-            label: 'Author',
-            filePath: 'src/content/authors/{slug}.json',
-            fields: [
-                { type: 'string', name: 'name', required: true },
-                { type: 'image', name: 'picture' }
+                { type: 'string', name: 'title', label: 'Title', required: true },
+                { type: 'string', name: 'subtitle', label: 'Subtitle' },
+                { type: 'string', name: 'buttonText', label: 'Button Text' },
+                { type: 'image', name: 'heroImage', label: 'Hero Image'}
             ]
         }
     }
