@@ -1,26 +1,23 @@
 // stackbit.config.ts
 // stackbit.config.ts - CORRECTED
 
-import { defineStackbitConfig } from '@stackbit/types';
-import { GitContentSource } from '@stackbit/cms-git';
+// stackbit.config.ts - CORRECTED
 
-// A SINGLE, CONSOLIDATED DEFAULT EXPORT
-export default defineStackbitConfig({
+import { defineStackbitConfig } from '@stackbit/types';
+// ... other imports
+
+export default defineStackbitConfig({ // <--- Opening brace
     stackbitVersion: '~0.6.0',
     contentSources: [
-        new GitContentSource({
-            rootPath: __dirname,
-            contentDirs: ['content'],
-            models: [/* ... your models ... */],
-            assetsConfig: {
-                referenceType: 'static',
-                staticDir: 'public',
-                publicPath: '/'
-            }
-        })
-    ]
-    // Add any other configuration properties inside this single object
-});
+        // ... your content source config
+    ], // <--- IMPORTANT: Add a comma here if it's missing
+
+    // THIS IS THE CORRECT LOCATION FOR THE MODELS PROPERTY
+    models: {
+        // ... model definitions
+    }
+
+}); // <--- Closing brace and parenthesis of the function call
 
         // --- Author Model (from before) ---
         Author: {
