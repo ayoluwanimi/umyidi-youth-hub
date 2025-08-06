@@ -2,11 +2,11 @@
 
 import { Link } from "react-router-dom";
 
-// This is the data file we created.
+// Import the new data file.
 import homeData from '../content/pages/home.json';
 
-// We will use an image that we know exists in your repository.
-import HeroImage from "@/assets/hero-image.jpg";
+// Import the correct, existing image file (.svg).
+import HeroImage from "@/assets/cuate.svg";
 
 export default function Hero() {
   return (
@@ -36,7 +36,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          {/* This now uses an image that exists */}
+          {/* This now uses the correct, existing image file. */}
           <img
             alt="Hero"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
