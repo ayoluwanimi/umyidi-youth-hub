@@ -1,7 +1,9 @@
+// src/components/Hero.tsx
 import { Link } from "react-router-dom";
 import { getHomePage } from "@/lib/content";
 
 export default function Hero() {
+  // Get content with fallback
   const { hero } = getHomePage();
 
   return (
