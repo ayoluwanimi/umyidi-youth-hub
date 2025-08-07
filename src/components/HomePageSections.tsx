@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, Target, Lightbulb, Phone, BookOpen, Heart } from "lucide-react";
+import React from "react";
+import Hero from "./Hero";
+import Features from "./Features";  // Add this new import
+import Footer from "./Footer";
 
 const HomePageSections = () => {
   const sections = [
@@ -101,4 +105,14 @@ const HomePageSections = () => {
   );
 };
 
-export default HomePageSections;
+export default function HomePageSections() {
+  return (
+    <div className="flex flex-col min-h-[100dvh]">
+      <main className="flex-1">
+        <Hero />
+        <Features />  {/* Add this line */}
+      </main>
+      <Footer />
+    </div>
+  );
+}
