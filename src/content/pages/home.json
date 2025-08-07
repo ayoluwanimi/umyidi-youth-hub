@@ -1,10 +1,4 @@
 {
-  "hero": {
-    "title": "Welcome to UMYIDI Youth Hub",
-    "subtitle": "Empowering Youth for a Brighter Future",
-    "ctaText": "Get Started",
-    "ctaLink": "#"
-  },
   "features": [
     {
       "title": "Education Support",
