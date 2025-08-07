@@ -3,7 +3,7 @@
     "title": "Welcome to UMYIDI Youth Hub",
     "subtitle": "Empowering Youth for a Brighter Future",
     "ctaText": "Get Started",
-    "ctaLink": "/programs"
+    "ctaLink": "#"
   },
   "features": [
     {
@@ -21,11 +21,5 @@
       "description": "Connect with experienced professionals in your field",
       "icon": "users"
     }
-  ],
-  "stats": {
-    "youthsHelped": "500+",
-    "programsOffered": "12",
-    "mentorsAvailable": "50+",
-    "successRate": "85%"
-  }
+  ]
 }
