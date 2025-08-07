@@ -5,7 +5,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePageSections />} />
-      {/* Add other routes here if needed */}
     </Routes>
   );
 }

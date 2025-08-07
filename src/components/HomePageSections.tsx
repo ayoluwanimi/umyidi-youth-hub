@@ -10,7 +10,6 @@ export default function HomePageSections() {
       <main className="flex-1">
         <Hero />
         <Features />
-        {/* Add more sections/components here as you build them */}
       </main>
       <Footer />
     </div>

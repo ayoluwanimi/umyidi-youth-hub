@@ -19,9 +19,6 @@ export default function Navbar() {
             </Link>
           </li>
           {/* Add more navigation links as you add more pages */}
-          {/* <li>
-            <Link to="/programs" className="hover:text-primary">Programs</Link>
-          </li> */}
         </ul>
       </nav>
     </header>
