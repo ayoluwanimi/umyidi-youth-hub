@@ -2,23 +2,7 @@ import { getHomePage } from "@/lib/content";
 
 export default function Features() {
   const home = getHomePage();
-  const features = home?.features || [
-    {
-      title: "Education Support",
-      description: "Access to quality educational resources and tutoring",
-      icon: "graduation-cap"
-    },
-    {
-      title: "Skills Development",
-      description: "Learn practical skills for the modern workplace",
-      icon: "tools"
-    },
-    {
-      title: "Mentorship",
-      description: "Connect with experienced professionals in your field",
-      icon: "users"
-    }
-  ];
+  const features = home?.features || [];
 
   return (
     <section className="w-full py-12 md:py-24 bg-gray-50 dark:bg-gray-800">
@@ -27,6 +11,17 @@ export default function Features() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md text-center">
+              {feature.image && (
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-20 h-20 object-cover rounded-full mx-auto mb-4"
+                  onError={e => {
+                    // fallback to a placeholder if image fails
+                    (e.currentTarget as HTMLImageElement).src = "/images/placeholder.jpg";
+                  }}
+                />
+              )}
               <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
               <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
             </div>

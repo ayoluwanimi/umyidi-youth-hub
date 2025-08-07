@@ -9,17 +9,20 @@
     {
       "title": "Education Support",
       "description": "Access to quality educational resources and tutoring",
-      "icon": "graduation-cap"
+      "icon": "graduation-cap",
+      "image": "/images/education.jpg"
     },
     {
       "title": "Skills Development",
       "description": "Learn practical skills for the modern workplace",
-      "icon": "tools"
+      "icon": "tools",
+      "image": "/images/skills.jpg"
     },
     {
       "title": "Mentorship",
       "description": "Connect with experienced professionals in your field",
-      "icon": "users"
+      "icon": "users",
+      "image": "/images/mentorship.jpg"
     }
   ]
 }
