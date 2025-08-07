@@ -1,9 +1,46 @@
-// src/lib/content.ts - simplified version
+// src/lib/content.ts - REPLACE WITH THIS
 
-// Import content files
-import homeContent from '@/content/pages/home.json';
+// Try to import content files - with error handling
+let homeContent = {
+  hero: {
+    title: "Welcome to UMYIDI Youth Hub",
+    subtitle: "Empowering Youth for a Brighter Future",
+    ctaText: "Get Started",
+    ctaLink: "#"
+  },
+  features: [
+    {
+      title: "Education Support",
+      description: "Access to quality educational resources and tutoring",
+      icon: "graduation-cap"
+    },
+    {
+      title: "Skills Development",
+      description: "Learn practical skills for the modern workplace",
+      icon: "tools"
+    },
+    {
+      title: "Mentorship",
+      description: "Connect with experienced professionals in your field",
+      icon: "users"
+    }
+  ],
+  stats: {
+    youthsHelped: "500+",
+    programsOffered: "12",
+    mentorsAvailable: "50+",
+    successRate: "85%"
+  }
+};
 
-// Basic types
+// Try to load actual content, fallback to defaults if it fails
+try {
+  homeContent = require('@/content/pages/home.json');
+} catch (e) {
+  console.error("Could not load home.json, using defaults", e);
+}
+
+// Type definitions for better TypeScript support
 export interface HeroContent {
   title: string;
   subtitle: string;
@@ -11,34 +48,24 @@ export interface HeroContent {
   ctaLink: string;
 }
 
-export interface HomePage {
-  hero: HeroContent;
-  // other content types
+export interface Feature {
+  title: string;
+  description: string;
+  icon: string;
 }
 
-// Simple content API that won't crash
+export interface HomePage {
+  hero: HeroContent;
+  features: Feature[];
+  stats: {
+    youthsHelped: string;
+    programsOffered: string;
+    mentorsAvailable: string;
+    successRate: string;
+  };
+}
+
+// Simple, reliable content API
 export const getHomePage = (): HomePage => {
-  try {
-    return {
-      hero: homeContent.hero || {
-        title: "Welcome to UMYIDI Youth Hub",
-        subtitle: "Empowering Youth for a Brighter Future",
-        ctaText: "Get Started",
-        ctaLink: "#"
-      },
-      // other content
-    };
-  } catch (error) {
-    console.error("Error loading content:", error);
-    // Fallback content if JSON fails to load
-    return {
-      hero: {
-        title: "Welcome to UMYIDI Youth Hub",
-        subtitle: "Empowering Youth for a Brighter Future",
-        ctaText: "Get Started",
-        ctaLink: "#"
-      },
-      // other fallback content
-    };
-  }
+  return homeContent as HomePage;
 };
