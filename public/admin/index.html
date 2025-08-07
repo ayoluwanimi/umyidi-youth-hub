@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UMYIDI Youth Hub</title>
-    <!-- Add this line for Netlify Identity -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- Add this script for Netlify Identity -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-  </body>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMYIDI Youth Hub - Content Manager</title>
+  <!-- The Identity Widget JS -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- The CMS JS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Debug script to help identify issues -->
+  <script>
+    console.log('Admin page loaded');
+    
+    // Check if config is loaded
+    if (window.CMS) {
+      console.log('CMS object is available');
+    } else {
+      console.error('CMS object not available');
+    }
+    
+    // Log any loading errors
+    window.addEventListener('error', function(e) {
+      console.error('Resource error:', e.target.src || e.target.href);
+    });
+  </script>
+</body>
 </html>

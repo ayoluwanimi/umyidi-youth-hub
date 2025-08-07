@@ -1,10 +1,13 @@
+# Basic CMS configuration
 backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+# Media settings
+media_folder: "public/images"
+public_folder: "/images"
 
+# Content collections
 collections:
   - name: "pages"
     label: "Pages"
@@ -17,62 +20,7 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subtitle", widget: "string" }
-              - { label: "Button Text", name: "ctaText", widget: "string" }
-              - { label: "Button Link", name: "ctaLink", widget: "string" }
-          - label: "Features"
-            name: "features"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "string" }
-              - { label: "Icon", name: "icon", widget: "select", options: ["graduation-cap", "tools", "users"] }
-          - label: "Statistics"
-            name: "stats"
-            widget: "object"
-            fields:
-              - { label: "Youths Helped", name: "youthsHelped", widget: "string" }
-              - { label: "Programs Offered", name: "programsOffered", widget: "string" }
-              - { label: "Mentors Available", name: "mentorsAvailable", widget: "string" }
-              - { label: "Success Rate", name: "successRate", widget: "string" }
-
-  - name: "programs"
-    label: "Programs"
-    folder: "src/content/programs"
-    create: true
-    extension: "json"
-    format: "json"
-    fields:
-      - { label: "ID", name: "id", widget: "string" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short Description", name: "shortDescription", widget: "string" }
-      - { label: "Full Description", name: "fullDescription", widget: "text" }
-      - { label: "Features", name: "features", widget: "list" }
-      - { label: "Eligibility", name: "eligibility", widget: "string" }
-      - { label: "Duration", name: "duration", widget: "string" }
-      - { label: "Image", name: "image", widget: "string" }
-
-  - name: "settings"
-    label: "Settings"
-    files:
-      - name: "site"
-        label: "Site Settings"
-        file: "src/content/settings/site.json"
-        fields:
-          - { label: "Site Name", name: "siteName", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
-          - label: "Contact Information"
-            name: "contact"
-            widget: "object"
-            fields:
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Address", name: "address", widget: "string" }
-          - label: "Social Media"
-            name: "social"
-            widget: "object"
-            fields:
-              - { label: "Facebook", name: "facebook", widget: "string", required: false }
-              - { label: "Twitter", name: "twitter", widget: "string", required: false }
-              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - {label: "Button Text", name: "ctaText", widget: "string"}
+              - {label: "Button Link", name: "ctaLink", widget: "string"}
